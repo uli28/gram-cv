@@ -1,23 +1,26 @@
 import React from 'react';
-import { HashRouter, Route, Link } from "react-router-dom";
+import 'materialize-css/dist/css/materialize.min.css';
+import 'materialize-css/dist/js/materialize.min.js';
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Home from './components/pages/Home';
+import Skills from './components/pages/skills/Skills';
+import Experiences from './components/pages/experiences/Experiences';
+import Educations from './components/pages/educations/Educations';
+import Portfolios from './components/pages/portfolios/Portfolios';
 import './App.css';
 
 function App() {
   return (
-    <HashRouter basename='/'>
-     <div>
-      <ul>
-       <li><Link to="/">Home</Link></li>
-       <li><Link to="/about">About</Link></li>
-      </ul>
-      <hr />
+    <Router>
       <Route exact path="/" component={Home} />
-      <Route path="/about" component={About} />
-     </div>
-    </HashRouter>
-   );
+      <Switch>
+        <Route path="/skills" component={Skills} />
+        <Route path="/experiences" component={Experiences} />
+        <Route path="/educations" component={Educations} />
+        <Route path="/portfolios" component={Portfolios} />
+      </Switch>
+    </Router>
+  );
 }
 
-const Home = () => <div><h2>Home</h2></div>
-const About = () => <div><h2>About</h2></div>
 export default App;
